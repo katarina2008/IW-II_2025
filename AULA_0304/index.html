@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU INTERATIVO</title>
+</head>
+<body>
+    <script>
+        function exibirMenu() {
+            return prompt(
+                "===== MENU INTERATIVO =====\n" +
+                "1 - Ver mensagem\n" +
+                "2 - Calcular soma\n" +
+                "3 - Sair\n" +
+                "Escolha uma opção:"
+            );
+        }
+
+        function executarOpcao(opcao) {
+            switch (opcao) {
+                case "1":
+                    alert("Olá! Bem-vindo ao menu interativo.");
+                    break;
+                case "2":
+                    let num1 = parseFloat(prompt("Digite o primeiro número:"));
+                    let num2 = parseFloat(prompt("Digite o segundo número:"));
+                    if (isNaN(num1) || isNaN(num2)) {
+                        alert("Erro: Você deve digitar números válidos.");
+                    } else {
+                        let media = (num1 + num2) / 2;
+                        if (num1 >= 0 && num1 <= 10 && num2 >= 0 && num2 <= 10) {
+                            if (media >= 7) {
+                                alert("Aprovado! Sua média é: " + media);
+                            } else if (media >= 5) {
+                                alert("Recuperação! Sua média é: " + media);
+                            } else {
+                                alert("Reprovado! Sua média é: " + media);
+                            }
+                        } else {
+                            alert("Nota inválida. Digite números entre 0 e 10");
+                        }
+                    }
+                    break;
+                case "3":
+                    alert("Você escolheu sair!");
+                    return false; // Encerra o loop
+                default:
+                    alert("Opção inválida. Tente novamente.");
+            }
+            return true; // Continua o loop
+        }
+
+        function iniciarMenu() {
+            let continuar = true;
+            while (continuar) {
+                let opcao = exibirMenu();
+                continuar = executarOpcao(opcao);
+            }
+        }
+
+        // Inicia o menu quando a página carregar
+        iniciarMenu();
+    </script>
+</body>
+</html>
